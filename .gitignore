@@ -1,0 +1,56 @@
+# Ignorar credenciais locais
+.env
+.env*
+!.env.example
+config_local.py
+
+# Ignorar Python Cache e Ambientes Virtuais
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# Ignorar Logs locais
+logs/
+*.log
+
+# Ignorar pastas de ferramentas de desenvolvimento e temp
+.claude/
+.gemini/
+scratch/
+*.part
+temp_manuais/
+
+# Ignorar arquivos de dados locais
+*.csv
+*.xlsx
+*.xls
+*.zip
+*.json
+.coletor.lock
+
+# Ignorar documentações internas antigas
+DOCUMENTACAO_coletor_outlook_allpe.md
+RECOVERY_FIX_SUMMARY.md
+docs/
+
+# Templates e dumps temporários de texto
+extracted_template.html
+hmtl relatorio Allpe.txt
+relatorio_limpeza.txt
+
+# Ignorar ferramentas de debug locais e scripts de teste locais
+tools/
+coletor_outlook_allpe.py
+check_emails.py
+rename_rescued.py
+rescue_drive_links.py
+rescue_historico.py
+test_detector_datas.py
+test_lookback_dates.py
+test_recovery_integration.py
+Executar_Coletor_AllPe.cmd
+Outlook_Full_Cycle_Allpe.xml.txt
