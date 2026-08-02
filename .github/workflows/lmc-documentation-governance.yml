@@ -1,0 +1,23 @@
+name: LMC Documentation Governance
+on: [pull_request, push]
+permissions:
+  contents: read
+jobs:
+  documentation-governance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate governance files
+        run: |
+          set -euo pipefail
+          for file in DOCUMENTATION_BIBLE.md AGENTS.md CLAUDE.md GEMINI.md .github/copilot-instructions.md; do
+            test -s "$file"
+            grep -q "LMC-DOC-GOVERNANCE" "$file"
+          done
+      - name: Require documentation review
+        if: github.event_name == 'pull_request'
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          printf '%s' "$PR_BODY" | grep -Eiq 'DOC-REVIEW:[[:space:]]*PASS'
+          printf '%s' "$PR_BODY" | grep -Eiq 'DOC-IMPACT:[[:space:]]*(updated|none)'
